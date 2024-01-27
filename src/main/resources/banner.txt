@@ -1,0 +1,5 @@
+
+
+	App		:		discovery-service
+	Port		:		${server.port}
+	Spring Boot     :		${spring-boot.formatted-version}	
