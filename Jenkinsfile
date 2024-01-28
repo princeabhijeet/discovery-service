@@ -33,8 +33,8 @@ pipeline {
         stage('Docker: Build Image') {
             steps {
                 echo '[Docker: Build Image]: START'
-                sh "docker build -t discovery-service:latest ."
-                sh "docker tag discovery-service princeabhijeet/discovery-service:latest"
+                
+                sh "docker build -t princeabhijeet/discovery-service:latest ."
                 echo '[Docker: Build Image]: COMPLETE'
             }
         }
