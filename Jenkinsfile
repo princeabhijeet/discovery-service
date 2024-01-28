@@ -11,36 +11,36 @@ pipeline {
     }
 
     stages {
-        stage('Git Checkout') {
+        stage('SCM Checkout') {
             steps {
-                echo 'Stage : Git Checkout : START'
+                echo '[SCM Checkout]: START'
                 checkout([$class: 'GitSCM',
                     branches: [[name: 'main']],
                     userRemoteConfigs: [[url: 'https://github.com/princeabhijeet/discovery-service.git']],
                     credentialsId: 'git_credentials'])
-                echo 'Stage : Git Checkout : COMPLETE'
+                echo '[SCM Checkout]: COMPLETE'
             }
         }
 
-        stage('Build JAR') {
+        stage('Maven: Build JAR') {
             steps {
-                echo 'Stage : Build JAR : START'
+                echo '[Maven: Build JAR]: START'
                 sh "mvn clean install -DskipTests=true"
-                echo 'Stage : Build JAR : COMPLETE'
+                echo '[Maven: Build JAR]: COMPLETE'
             }
         }
 
-        stage('Build Image') {
+        stage('Docker: Build Image') {
             steps {
-                echo 'Stage : Build Image : START'
+                echo '[Docker: Build Image]: START'
                 sh "docker build -t discovery-service:latest ."
-                echo 'Stage : Build Image : COMPLETE'
+                echo '[Docker: Build Image]: COMPLETE'
             }
         }
 
-        stage('DockerHub Push') {
+        stage('Docker: Push Image') {
             steps {
-                echo 'Stage : DockerHub Push : START'
+                echo '[Docker: Push Image]: START'
                 withCredentials([usernamePassword(credentialsId: 'dockerhub_credentials', 
                     usernameVariable: 'princeabhijeet', 
                     passwordVariable: 'Prince@10')]) {
@@ -48,7 +48,7 @@ pipeline {
                     sh "docker tag discovery-service princeabhijeet/discovery-service:latest"
                     sh "docker push princeabhijeet/discovery-service:latest"
                 }
-                echo 'Stage : DockerHub Push : COMPLETE'
+                echo '[Docker: Push Image]: COMPLETE'
             }
         }
     }
