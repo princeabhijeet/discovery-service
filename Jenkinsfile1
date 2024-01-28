@@ -9,6 +9,7 @@ node {
 	    }    
 	  
 	    stage('Build JAR') {
+	      sh 'printenv'
 	      sh "'${mvnHome}/bin/mvn' clean install -DskipTests=true"
 	    }
 			

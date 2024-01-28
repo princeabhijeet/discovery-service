@@ -13,7 +13,6 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-            	sh 'printenv'
                 echo 'Stage : Git Checkout : START'
                 checkout([$class: 'GitSCM',
                     branches: [[name: 'main']],
@@ -34,7 +33,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 echo 'Stage : Build Image : START'
-                sh "docker build -t discovery-service:0.0.1 ."
+                sh "docker build -t discovery-service:latest ."
                 echo 'Stage : Build Image : COMPLETE'
             }
         }
