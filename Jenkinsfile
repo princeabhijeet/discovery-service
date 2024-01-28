@@ -13,7 +13,8 @@ node {
 	    }
 			
 	    stage('Build Image') {
-	      dockerImage = docker.build("discovery-service:latest")
+	      sh "docker build -t discovery-service:0.0.1 ."
+	      //dockerImage = docker.build("discovery-service:latest")
 	    }
 	   
 }
