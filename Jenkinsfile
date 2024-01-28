@@ -14,6 +14,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
+            	sh 'printenv'
                 echo 'Stage : Git Checkout : START'
                 checkout([$class: 'GitSCM',
                     branches: [[name: 'main']],
