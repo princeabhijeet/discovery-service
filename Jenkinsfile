@@ -48,5 +48,6 @@ pipeline {
                 echo '[Docker: Push Image]: COMPLETE'
             }
         }
+        
     }
 }
