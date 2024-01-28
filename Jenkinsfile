@@ -3,6 +3,9 @@ node {
     def MAVEN_HOME = tool name: 'maven'
     def MAVEN_CMD = "${MAVEN_HOME}/bin/mvn "
     
+    def DOCKER_HOME = tool name: 'docker'
+    def DOCKER_CMD = "${DOCKER_HOME}/bin/docker "
+    
     stage('Git Checkout') {
     	echo 'Stage : Git Checkout : START'   	
     	checkout([$class: 'GitSCM',
@@ -23,7 +26,7 @@ node {
     stage('Build Image') {
     	echo 'Stage : Build Image : START'
         script {
-            sh "docker build -t discovery-service -f Dockerfile ."
+            sh "${DOCKER_CMD} build -t discovery-service -f Dockerfile ."
         }
         echo 'Stage : Build Image : COMPLETE'
     }
@@ -34,9 +37,9 @@ node {
             withCredentials([usernamePassword(credentialsId: 'dockerhub_credentials', 
             usernameVariable: 'princeabhijeet', 
             passwordVariable: 'Prince@10')]) {
-                sh "docker login -u princeabhijeet -p Prince@10"
-                sh "docker tag discovery-service princeabhijeet/discovery-service:latest"
-                sh "docker push princeabhijeet/discovery-service:latest"
+                sh "${DOCKER_CMD} login -u princeabhijeet -p Prince@10"
+                sh "${DOCKER_CMD} tag discovery-service princeabhijeet/discovery-service:latest"
+                sh "${DOCKER_CMD} push princeabhijeet/discovery-service:latest"
             }
         }
         echo 'Stage : DockerHub Push : COMPLETE'
