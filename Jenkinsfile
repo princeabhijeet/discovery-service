@@ -1,20 +1,56 @@
-node {  
-	    def mvnHome = tool 'maven'
-	    
-	    stage('Code Checkout') {
-	      checkout([$class: 'GitSCM',
+pipeline {
+    
+    agent any
+
+    tools {
+        maven 'maven'
+    }
+    
+    options {
+        skipDefaultCheckout(true)
+    }
+
+    stages {
+        stage('Git Checkout') {
+            steps {
+            	sh 'printenv'
+                echo 'Stage : Git Checkout : START'
+                checkout([$class: 'GitSCM',
                     branches: [[name: 'main']],
                     userRemoteConfigs: [[url: 'https://github.com/princeabhijeet/discovery-service.git']],
                     credentialsId: 'git_credentials'])
-	    }    
-	  
-	    stage('Build JAR') {
-	      sh "'${mvnHome}/bin/mvn' clean install -DskipTests=true"
-	    }
-			
-	    stage('Build Image') {
-	      sh "docker build -t discovery-service:0.0.1 ."
-	      //dockerImage = docker.build("discovery-service:latest")
-	    }
-	   
+                echo 'Stage : Git Checkout : COMPLETE'
+            }
+        }
+
+        stage('Build JAR') {
+            steps {
+                echo 'Stage : Build JAR : START'
+                sh "mvn clean install -DskipTests=true"
+                echo 'Stage : Build JAR : COMPLETE'
+            }
+        }
+
+        stage('Build Image') {
+            steps {
+                echo 'Stage : Build Image : START'
+                sh "docker build -t discovery-service:0.0.1 ."
+                echo 'Stage : Build Image : COMPLETE'
+            }
+        }
+
+        stage('DockerHub Push') {
+            steps {
+                echo 'Stage : DockerHub Push : START'
+                withCredentials([usernamePassword(credentialsId: 'dockerhub_credentials', 
+                    usernameVariable: 'princeabhijeet', 
+                    passwordVariable: 'Prince@10')]) {
+                    sh "docker login -u princeabhijeet -p Prince@10"
+                    sh "docker tag discovery-service princeabhijeet/discovery-service:latest"
+                    sh "docker push princeabhijeet/discovery-service:latest"
+                }
+                echo 'Stage : DockerHub Push : COMPLETE'
+            }
+        }
+    }
 }
