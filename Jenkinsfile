@@ -42,7 +42,7 @@ pipeline {
         stage('Docker: Push Image') {
             steps {
                 echo '[Docker: Push Image]: START'
-                withDockerRegistry([credentialsId: 'dockerhub_credentials', url: '']) {
+                withDockerRegistry([credentialsId: 'dockerhub_credentials', url: 'https://index.docker.io/v1/']) {
                     sh "docker push princeabhijeet/discovery-service:latest"
                 }
                 echo '[Docker: Push Image]: COMPLETE'
