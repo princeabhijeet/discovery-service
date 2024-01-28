@@ -1,8 +1,7 @@
 node {
 
-	environment {
-        MAVEN_HOME = tool 'maven'
-    }
+    def MAVEN_HOME = tool name: 'maven'
+    def MAVEN_CMD = "${MAVEN_HOME}/bin/mvn "
     
     stage('Git Checkout') {
     	echo 'Stage : Git Checkout : START'   	
@@ -16,7 +15,7 @@ node {
     stage('Build JAR') {
     	echo 'Stage : Build JAR : START'
         script {
-            sh "${MAVEN_HOME}/bin/mvn clean install -DskipTests=true"
+            sh "${MAVEN_CMD} clean install -DskipTests=true"
         }
         echo 'Stage : Build JAR : COMPLETE'
     }
