@@ -5,11 +5,11 @@ node {
     }
     
     stage('Git Checkout') {
-    	echo 'Stage : Git Checkout : START'
-        checkout([$class: 'GitSCM',       
-        userRemoteConfigs: [[url: 'https://github.com/princeabhijeet/discovery-service.git']], 
-        branches: [[name: 'main']], 
-        credentialsId: 'git_credentials')
+    	echo 'Stage : Git Checkout : START'   	
+    	checkout([$class: 'GitSCM',
+        	branches: [[name: 'main']],
+        	userRemoteConfigs: [[url: 'https://github.com/princeabhijeet/discovery-service.git']],
+        	credentialsId: 'git_credentials'])
         echo 'Stage : Git Checkout : COMPLETE'
     }
 
