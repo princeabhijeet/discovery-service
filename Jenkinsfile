@@ -26,7 +26,7 @@ node {
     stage('Build Image') {
     	echo 'Stage : Build Image : START'
         script {
-            sh "${DOCKER_CMD} build -t discovery-service:latest -f Dockerfile ."
+            sh "${DOCKER_CMD} build -t discovery-service ."
         }
         echo 'Stage : Build Image : COMPLETE'
     }
