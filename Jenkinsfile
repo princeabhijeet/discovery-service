@@ -30,7 +30,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 echo 'Stage : Build Image : START'
-                sh "docker build -t discovery-service ."
+                sh "docker build -t springboot-microservices/discovery-service:0.0.1 ."
                 echo 'Stage : Build Image : COMPLETE'
             }
         }
