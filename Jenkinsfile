@@ -6,6 +6,10 @@ pipeline {
         maven 'maven'
 		dockerTool 'docker'
     }
+    
+    options {
+        skipDefaultCheckout(true)
+    }
 
     stages {
         stage('Git Checkout') {
