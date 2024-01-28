@@ -41,12 +41,15 @@ pipeline {
         stage('Docker: Push Image') {
             steps {
                 echo '[Docker: Push Image]: START'
-                withCredentials([usernamePassword(credentialsId: 'dockerhub_credentials', 
-                    usernameVariable: 'princeabhijeet', 
-                    passwordVariable: 'Prince@10')]) {
-                    sh "docker login -u princeabhijeet -p Prince@10"
-                    sh "docker tag discovery-service princeabhijeet/discovery-service:latest"
-                    sh "docker push princeabhijeet/discovery-service:latest"
+                //withCredentials([usernamePassword(credentialsId: 'dockerhub_credentials', 
+                    //usernameVariable: 'princeabhijeet', 
+                    //passwordVariable: 'Prince@10')]) {
+                    //sh "docker login -u princeabhijeet -p Prince@10"
+                    //sh "docker tag discovery-service princeabhijeet/discovery-service:latest"
+                    //sh "docker push princeabhijeet/discovery-service:latest"
+                //}
+                withDockerRegistry([credentialsId: 'dockerhub_credentials', url: 'https://index.docker.io/v1/']) {
+                        docker.image('princeabhijeet/discovery-service:latest').push()
                 }
                 echo '[Docker: Push Image]: COMPLETE'
             }
