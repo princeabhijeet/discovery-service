@@ -1,11 +1,13 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: discovery-service
 spec:
   selector:
     matchLabels:
       app: discovery-service
+  serviceName: discovery-service
+  replicas: 2
   template:
     metadata:
       labels:
@@ -14,5 +16,6 @@ spec:
       containers:
       - name: discovery-service
         image: princeabhijeet/discovery-service
+        imagePullPolicy: Always
         ports:
         - containerPort: 8761
