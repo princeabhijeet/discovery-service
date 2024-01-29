@@ -9,6 +9,10 @@ ENTRYPOINT [ "java", "-jar", "/discovery-service.jar" ]
 EXPOSE 8761
 
 #
+# Spring profile specific docker image:
+# ENTRYPOINT [ "java", "-Dspring.profiles.active=docker", "-jar", "/discovery-service.jar" ]
+#
+#
 # Build docker image:
 # docker build -t springboot-microservices/discovery-service:0.0.1 .
 # -t : tag info will be provided in command
