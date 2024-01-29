@@ -14,7 +14,7 @@ EXPOSE 8761
 #
 #
 # Build docker image:
-# docker build -t springboot-microservices/discovery-service:0.0.1 .
+# docker build -t princeabhijeet/discovery-service:latest .
 # -t : tag info will be provided in command
 # last . : find Dockerfile in current root folder to build docker image 
 
@@ -24,8 +24,8 @@ EXPOSE 8761
 
 #
 # Run docker image:
-# docker run -d -p8761:8761 --name discovery-service springboot-microservices/discovery-service:0.0.1
-# docker run -d -p 8761:8761 --net msnet --name discovery-service springboot-microservices/discovery-service:0.0.1
+# docker run -d -p8761:8761 --name discovery-service princeabhijeet/discovery-service:latest
+# docker run -d -p 8761:8761 --net msnet --name discovery-service princeabhijeet/discovery-service:latest
 # -d : detatched mode
 # -p : port information
 # 8761:8761 : hostport:containerport
