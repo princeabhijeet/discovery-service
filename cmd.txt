@@ -1,0 +1,37 @@
+
+hostname
+ipconfig getifaddr en0
+
+git version
+git --version
+which git
+
+docker version
+docker --version
+which docker
+
+docker build -t princeabhijeet/discovery-service:latest .
+docker run -d -p 8761:8761 --net msnet --name discovery-service princeabhijeet/discovery-service:latest
+
+minikube version
+minikube status
+minikube stop
+minikube start
+minikube dashboard
+minikube service eureka-np
+
+kubectl version
+kubectl apply -f .
+kubectl get all
+kubectl get services
+kubectl get pods
+kubectl logs podname
+kubectl delete all --all
+
+
+
+
+
+
+
+
