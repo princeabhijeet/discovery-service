@@ -17,9 +17,9 @@ eureka:
       defaultZone: ${EUREKA_DEFAULTZONE_URL:http://localhost:8761/eureka}
   server:
     enable-self-preservation: false
-    eviction-interval-timer-in-ms: 9000
+    eviction-interval-timer-in-ms: 7000
 
-EUREKA_DEFAULTZONE_URL: http://${eureka.instance.hostname}:8761/eureka/
+EUREKA_DEFAULTZONE_URL: http://${POD_NAME}.eureka:8761/eureka/
 
 
 
