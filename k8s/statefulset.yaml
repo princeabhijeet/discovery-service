@@ -1,21 +1,20 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: discovery-service
+  name: eureka
 spec:
   selector:
     matchLabels:
-      app: discovery-service
-  serviceName: discovery-service
+      app: eureka
+  serviceName: "eureka"
   replicas: 1
   template:
     metadata:
       labels:
-        app: discovery-service
+        app: eureka
     spec:
       containers:
-      - name: discovery-service
+      - name: eureka
         image: princeabhijeet/discovery-service
-        imagePullPolicy: Always
         ports:
         - containerPort: 8761
