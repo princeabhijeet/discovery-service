@@ -9,13 +9,17 @@ spring:
 eureka:
   instance:
     hostname: localhost
+    prefer-ip-address: false
   client:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://localhost:${server.port}/eureka
+      defaultZone: ${EUREKA_DEFAULTZONE_URL:http://localhost:8761/eureka}
   server:
     enable-self-preservation: false
-    eviction-interval-timer-in-ms: 5000
+    eviction-interval-timer-in-ms: 9000
 
-#http://localhost:8761/eureka        
+EUREKA_DEFAULTZONE_URL: http://${eureka.instance.hostname}:8761/eureka
+
+
+    
