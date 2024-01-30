@@ -8,17 +8,17 @@ spring:
 
 eureka:
   instance:
-    hostname: eureka-0.eureka
+    hostname: ${POD_NAME}.eureka
   client:
-    register-with-eureka: false
-    fetch-registry: false
+    register-with-eureka: true
+    fetch-registry: true
     service-url:
       defaultZone: ${EUREKA_DEFAULTZONE_URL:http://localhost:8761/eureka}
   server:
     enable-self-preservation: false
     eviction-interval-timer-in-ms: 5000
 
-EUREKA_DEFAULTZONE_URL: http://eureka-0.eureka:8761/eureka/
+EUREKA_DEFAULTZONE_URL: http://eureka-0.eureka:8761/eureka/,http://eureka-1.eureka:8761/eureka/,http://eureka-2.eureka:8761/eureka/
 
 
 
