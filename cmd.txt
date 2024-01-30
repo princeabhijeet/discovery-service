@@ -1,17 +1,34 @@
 
+
+
 hostname
 ipconfig getifaddr en0
+
+java -version
+java --version
+
+mvn clean install -DskipTests=true
 
 git version
 git --version
 which git
 
+brew install jenkins-lts
+brew upgrade jenkins-lts
+brew services start jenkins-lts
+brew services restart jenkins-lts
+
 docker version
 docker --version
 which docker
-
+docker images
+docker ps -a
+docker network create msnet
+docker network rm msnet
 docker build -t princeabhijeet/discovery-service:latest .
 docker run -d -p 8761:8761 --net msnet --name discovery-service princeabhijeet/discovery-service:latest
+docker push princeabhijeet/discovery-service:latest
+docker rmi princeabhijeet/discovery-service:latest
 
 minikube version
 minikube status
