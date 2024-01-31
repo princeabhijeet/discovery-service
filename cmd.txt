@@ -17,6 +17,9 @@ brew install jenkins-lts
 brew upgrade jenkins-lts
 brew services start jenkins-lts
 brew services restart jenkins-lts
+brew services stop jenkins-lts
+brew services list
+
 
 docker version
 docker --version
@@ -41,7 +44,11 @@ kubectl version
 kubectl apply -f .
 kubectl get all
 kubectl get services
+kubectl get svc
 kubectl get pods
+kubectl get po
+kubectl get pods --show-labels
+kubectl get pods --show-labels -l release=0-5
 kubectl logs podname
 kubectl delete all --all
 
