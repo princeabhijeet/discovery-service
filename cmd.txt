@@ -3,6 +3,8 @@
 
 hostname
 ipconfig getifaddr en0
+nslookup google.com
+nslookup order-service
 
 java -version
 java --version
@@ -42,16 +44,61 @@ minikube service eureka-np
 
 kubectl version
 kubectl apply -f .
+kubectl get namespaces
+kubectl get ns = default, kube-system, kube-public
 kubectl get all
+kubectl get all -n kube-system
+kubectl get all -n kube-public
 kubectl get services
 kubectl get svc
 kubectl get pods
 kubectl get po
+kubectl get pods -n kube-system
+kubectl get po -n kube-system
 kubectl get pods --show-labels
 kubectl get pods --show-labels -l release=0-5
 kubectl logs podname
 kubectl delete all --all
 kubectl delete pod --all
+kubectl describe rs replica-set-name
+
+
+kubectl rollout status deployment o
+kubectl rollout status deploy webapp
+kubectl rollout history deployment webapp
+kubectl rollout history deploy webapp
+kubectl rollout undo deployment webapp
+kubectl rollout undo deploy webap
+kubectl rollout undo deployment webapp --to-revision=2
+kubectl rollout undo deploy webapp --to-revision=2
+
+
+DNS = Domain Name System
+kubectl describe service kube-dns -n kube-system
+kubectl describe svc kube-dns -n kube-system
+
+kubectl exec -it some-pod sh
+winpty kubectl exec -t some-pod
+cat /etc/resolv.conf
+namespace 10.96.0.10 (kube-dns ip)
+
+apk update
+apk add mysql-client
+mysql -h order-service -uroot -ppassword OrderDB
+
+
+FQDN = Fully Qualifies Domain Name
+kubectl exec -it order-service-pod sh
+nslookup payment-service
+10.104.224.29 order-sevice.default.svc.cluster.local
+order-sevice.default.svc.cluster.local = FQDN
+default = namespace in which order-service is
+
+
+
+
+
+
 
 
 
