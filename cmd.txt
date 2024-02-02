@@ -51,6 +51,7 @@ kubectl get pods --show-labels
 kubectl get pods --show-labels -l release=0-5
 kubectl logs podname
 kubectl delete all --all
+kubectl delete pod --all
 
 
 
