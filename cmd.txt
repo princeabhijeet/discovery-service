@@ -58,6 +58,7 @@ kubectl get po -n kube-system
 kubectl get pods --show-labels
 kubectl get pods --show-labels -l release=0-5
 kubectl logs podname
+klubectl logs -f podname
 kubectl delete all --all
 kubectl delete pod --all
 kubectl describe rs replica-set-name
