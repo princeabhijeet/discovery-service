@@ -95,6 +95,18 @@ nslookup payment-service
 order-sevice.default.svc.cluster.local = FQDN
 default = namespace in which order-service is
 
+#see mongodb mounting inside host (kubectl/minikube environment)
+minikube default login
+username: docker
+password: tcuser
+pwd: /home/docker
+ls: bin dev home mnt
+cd mnt
+ls: sda1 some
+cd some
+ls: structure
+cd structure
+ls: mongod.lock (host(minikube) mounted mongodb)
 
 
 
