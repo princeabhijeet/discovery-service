@@ -127,6 +127,46 @@ mv myfile.txt subdir: will move myfile.txt to another directory called subdir
 rm new.txt: removes/deletes new.txt
 rm -r subdir: removes a directory with all files called subdir
 
+# vi editor
+# 3 modes: command, insert, execute
+# vi opens in command mode by default
+i: change to insert mode
+esc: change to command mode
+I: cursor goes to start of current cursor line
+A: cursor goes to the end of the current cursor line
+a: append in the middle or whereever cursor is
+o: new line below current line
+O: new line before current line
+s: removes current character at cursor position, also type to append after removal
+dd: delete a line
+2dd: delete 2 lines
+yy: copy a line
+p: paste a line
+
+shift+:  : execute mode
+:wq  : write/save + quit
+:q   : quit without saving
+:q!  : forcefully quit without saving
+:/sfd  : locates sfd in file
+
+yum repolist: lists repositories from where software packages will be pulled for installation
+yum repolist: Amazon Linux 2 core repository, Amazon Extras repo for docker
+yum list installed: lists already installed software packages
+yum grouplist: list those softwares that were installed as group
+yum grouplist: AWS Tools, Development Tools, buildsys-build
+yum install httpd: installs httpd web server (package name)
+service httpd start: starts the httpd service
+vi /var/www/html/index.html: default page when aws hostname is hit in browser
+yum install curl: installs curl: helps hit a server on particular port
+curl localhost 80: will load index.html
+service httpd stop: stop httpd service
+yum remove httpd: removes/deletes the software package
+yum group groupname: install group packages
+tail -5 /var/log/yum.log: see last 5 log lines
+yum history: shows yum commands executed history
+yum search java: shows all packages which have java
+yum search httpd: shows all packages which have httpd
+
 
 
 
