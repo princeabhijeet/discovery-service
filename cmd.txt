@@ -109,6 +109,23 @@ cd structure
 ls: mongod.lock (host(minikube) mounted mongodb)
 
 
+sudo -i: change to super user with admin access
+top: real time system processes - to keep ssh session alive
+ls: list
+ls -a: list all including hidden files
+ls -l: long list
+ls -r: list conent from sub-directory also
+ls /: list root directory
+ls /bin: list bin directory
+pwd: present working directory
+mkdir: make directory: mkdir mydir
+cd mydir: change to mydir diectotory
+cat > myfile.txt (enter key: start typing file content then hit CTRL+C): > symbol allows to input file content
+cp myfile.txt yourfile.txt: copies myfile.txt content into newly created yourfile.txt in current directory
+mv myfile.txt new.txt: will rename myfile.txt to new.txt
+mv myfile.txt subdir: will move myfile.txt to another directory called subdir
+rm new.txt: removes/deletes new.txt
+rm -r subdir: removes a directory with all files called subdir
 
 
 
